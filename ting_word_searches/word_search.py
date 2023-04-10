@@ -1,4 +1,4 @@
-def exists_word(word, instance):
+def exists_word(word, instance, search_word=False):
     search = []
     word = word.lower()
 
@@ -8,6 +8,9 @@ def exists_word(word, instance):
             if word in line.lower():
                 occurrences.append({
                         "linha": line_number
+                    } if not search_word else {
+                        "linha": line_number,
+                        "conteudo": line
                     })
         if occurrences:
             search.append({
@@ -20,4 +23,4 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    return exists_word(word, instance, True)
